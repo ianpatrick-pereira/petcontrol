@@ -1,0 +1,2 @@
+$ cd /workspace/petcontrol-frontend && find src -name "*.jsx" -o -name "*.js" | grep -E "(Login|Register|Auth)" | head -10
+src/pages/Login.jsx

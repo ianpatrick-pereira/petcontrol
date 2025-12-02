@@ -1,0 +1,21 @@
+$ find /workspace -type f -name "*" | head -20
+/workspace/.git/COMMIT_EDITMSG
+/workspace/.git/HEAD
+/workspace/.git/config
+/workspace/.git/description
+/workspace/.git/hooks/applypatch-msg.sample
+/workspace/.git/hooks/commit-msg.sample
+/workspace/.git/hooks/fsmonitor-watchman.sample
+/workspace/.git/hooks/post-checkout
+/workspace/.git/hooks/post-commit
+/workspace/.git/hooks/post-merge
+/workspace/.git/hooks/post-update.sample
+/workspace/.git/hooks/pre-applypatch.sample
+/workspace/.git/hooks/pre-commit.sample
+/workspace/.git/hooks/pre-merge-commit.sample
+/workspace/.git/hooks/pre-push
+/workspace/.git/hooks/pre-push.sample
+/workspace/.git/hooks/pre-rebase.sample
+/workspace/.git/hooks/pre-receive.sample
+/workspace/.git/hooks/prepare-commit-msg.sample
+/workspace/.git/hooks/push-to-checkout.sample

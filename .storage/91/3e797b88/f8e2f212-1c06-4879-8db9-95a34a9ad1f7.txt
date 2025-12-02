@@ -1,0 +1,132 @@
+$ cd /workspace/petcontrol-backend && mvn clean compile
+bash: line 1: mvn: command not found
+$ cd /workspace/petcontrol-frontend && npm run lint
+
+npm ERR! Missing script: "lint"
+npm ERR! 
+npm ERR! Did you mean this?
+npm ERR!     npm link # Symlink a package folder
+npm ERR! 
+npm ERR! To see a list of scripts, run:
+npm ERR!   npm run
+
+npm ERR! A complete log of this run can be found in: /root/.npm/_logs/2025-11-27T20_16_34_009Z-debug-0.log
+$ cd /workspace/petcontrol-frontend && cat package.json | grep -A 5 "scripts"
+
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "karma start karma.conf.cjs",
+    "test:one": "karma start karma.conf.cjs --single-run",
+$ cd /workspace && ls -la petcontrol-backend/src/main/resources/
+
+total 153
+drwxr-xr-x  3 root root   8192 Nov 27 07:37 .
+drwxr-xr-x 36 root root 147456 Nov 27 07:37 ..
+-rw-r--r--  1 root root   1007 Nov 27 07:37 application.properties
+$ cd /workspace && cat petcontrol-backend/src/main/resources/application.properties
+
+# Server Configuration
+server.port=8080
+server.servlet.context-path=/api
+
+# H2 Database Configuration
+spring.datasource.url=jdbc:h2:mem:petcontroldb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+
+# JPA Configuration
+spring.jpa.hibernate.ddl-auto=create-drop
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+
+# H2 Console (for development)
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2-console
+
+# JWT Configuration
+jwt.secret=5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437
+jwt.expiration=86400000
+
+# Swagger/OpenAPI Configuration
+springdoc.api-docs.path=/api-docs
+springdoc.swagger-ui.path=/swagger-ui.html
+springdoc.swagger-ui.operationsSorter=method
+
+# CORS Configuration
+cors.allowed-origins=http://localhost:5173,http://localhost:3000
+
+# Logging
+logging.level.com.petcontrol=DEBUG
+logging.level.org.springframework.security=DEBUG$ cd /workspace/petcontrol-frontend && npm run build
+
+
+> petcontrol-react@1.0.0 build
+> vite build
+
+sh: 1: vite: not found
+$ cd /workspace/petcontrol-backend && find src -name "*.java" | wc -l
+
+22
+$ cd /workspace && cat petcontrol-frontend/src/services/authService.js | head -20
+
+import api from './api';
+
+export const authService = {
+  async login(email, password) {
+    try {
+      const response = await api.post('/auth/login', { email, password });
+      const { token, email: userEmail, nombre, rol, id } = response.data;
+      
+      // Guardar token y datos del usuario
+      localStorage.setItem('token', token);
+      const usuario = { id, email: userEmail, nombre, rol };
+      localStorage.setItem('usuarioActual', JSON.stringify(usuario));
+      
+      return usuario;
+    } catch (error) {
+      console.error('Error en login:', error);
+      throw new Error('Email o contraseña incorrectos');
+    }
+  },
+
+$ cd /workspace/petcontrol-frontend && npm install
+
+npm WARN deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+npm WARN deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+npm WARN deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+
+added 519 packages, and audited 520 packages in 1m
+
+96 packages are looking for funding
+  run `npm fund` for details
+
+2 moderate severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+npm notice 
+npm notice New major version of npm available! 10.2.4 -> 11.6.4
+npm notice Changelog: <https://github.com/npm/cli/releases/tag/v11.6.4>
+npm notice Run `npm install -g npm@11.6.4` to update!
+npm notice 
+$ cd /workspace/petcontrol-frontend && npm run build
+
+
+> petcontrol-react@1.0.0 build
+> vite build
+
+vite v5.4.21 building for production...
+transforming...
+✓ 92 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.46 kB │ gzip:  0.29 kB
+dist/assets/index-CfkJyshZ.css  231.25 kB │ gzip: 30.69 kB
+dist/assets/index-7HjlEcrl.js   215.93 kB │ gzip: 71.67 kB
+✓ built in 2.01s

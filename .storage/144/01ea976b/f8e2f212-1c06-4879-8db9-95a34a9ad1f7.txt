@@ -1,0 +1,14 @@
+$ cd /workspace/petcontrol-backend && find . -type f -name "*.md" | grep -i -E "mysql|h2|oracle|cloud|instalacion|configuracion" | head -20
+$ cd /workspace/petcontrol-backend && find . -type d -name "*h2*" -o -type d -name "*oracle*" -o -type d -name "*cloud*" 2>/dev/null
+
+$ cd /workspace/petcontrol-backend && ls -la
+
+total 49534
+drwxr-xr-x  42 root root   208896 Dec  1 14:25 .
+drwxr-xr-x 708 root root 50311168 Dec  1 14:48 ..
+-rw-r--r--   1 root root    27128 Dec  1 14:16 GUIA_XAMPP_COMPLETA.md
+-rw-r--r--   1 root root    11413 Dec  1 14:26 README.md
+-rw-r--r--   1 root root     4070 Dec  1 14:25 pom.xml
+drwxr-xr-x  38 root root   159744 Nov 27 07:37 src
+$ cd /workspace/petcontrol-backend && rm -f CONFIGURACION_MYSQL.md INSTALACION_MYSQL.md README_MYSQL.md
+

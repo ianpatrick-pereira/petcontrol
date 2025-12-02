@@ -1,0 +1,3 @@
+$ cd /workspace/petcontrol-backend && find . -type f -name "*.md" | grep -i -E "mysql|h2|oracle|cloud|instalacion|configuracion" | head -20
+$ cd /workspace/petcontrol-backend && find . -type d -name "*h2*" -o -type d -name "*oracle*" -o -type d -name "*cloud*" 2>/dev/null
+

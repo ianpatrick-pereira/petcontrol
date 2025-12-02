@@ -1,0 +1,2 @@
+$ cd /workspace/petcontrol-backend && mvn clean compile
+bash: line 1: mvn: command not found

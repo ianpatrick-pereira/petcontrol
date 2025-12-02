@@ -1,0 +1,20 @@
+$ cd /workspace && find . -type d -name "storage" 2>/dev/null | head -20
+$ cd /workspace && ls -la
+
+total 47802
+drwxr-xr-x 523 root root 24485888 Nov 27 11:54 .
+drwxr-xr-x   1 root root      130 Nov 27 11:53 ..
+-rw-r--r--   1 root root  2855475 Nov 27 11:48 .MGXEnv.json
+drwxr-xr-x   3 root root     8192 Nov 27 07:44 .MGXTools
+drwxr-xr-x 334 root root 10330112 Nov 27 11:45 .git
+-rw-r--r--   1 root root     1472 Nov 27 07:17 .gitattributes
+-rw-r--r--   1 root root      476 Nov 27 07:17 .gitignore
+-rw-r--r--   1 root root     1170 Nov 27 11:54 .timeline.json
+-rw-r--r--   1 root root     3973 Nov 27 11:43 .wiki.md
+-rw-r--r--   1 root root    15590 Nov 27 07:41 DOCUMENTACION_INTEGRACION.md
+-rw-r--r--   1 root root    12569 Nov 27 07:42 MANUAL_USUARIO.md
+-rw-r--r--   1 root root    11252 Nov 27 07:43 README.md
+drwxr-xr-x  40 root root   163840 Nov 27 07:39 petcontrol-backend
+drwxr-xr-x  65 root root   667648 Nov 27 11:48 petcontrol-frontend
+-rw-r--r--   1 root root     1769 Nov 27 07:39 todo.md
+drwxr-xr-x  75 root root 10387456 Nov 27 07:36 uploads

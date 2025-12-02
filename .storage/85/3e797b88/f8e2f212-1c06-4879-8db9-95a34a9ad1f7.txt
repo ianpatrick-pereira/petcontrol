@@ -1,0 +1,64 @@
+$ cd /workspace/petcontrol-backend && mvn clean compile
+bash: line 1: mvn: command not found
+$ cd /workspace/petcontrol-frontend && npm run lint
+
+npm ERR! Missing script: "lint"
+npm ERR! 
+npm ERR! Did you mean this?
+npm ERR!     npm link # Symlink a package folder
+npm ERR! 
+npm ERR! To see a list of scripts, run:
+npm ERR!   npm run
+
+npm ERR! A complete log of this run can be found in: /root/.npm/_logs/2025-11-27T20_16_34_009Z-debug-0.log
+$ cd /workspace/petcontrol-frontend && cat package.json | grep -A 5 "scripts"
+
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "karma start karma.conf.cjs",
+    "test:one": "karma start karma.conf.cjs --single-run",
+$ cd /workspace && ls -la petcontrol-backend/src/main/resources/
+
+total 153
+drwxr-xr-x  3 root root   8192 Nov 27 07:37 .
+drwxr-xr-x 36 root root 147456 Nov 27 07:37 ..
+-rw-r--r--  1 root root   1007 Nov 27 07:37 application.properties
+$ cd /workspace && cat petcontrol-backend/src/main/resources/application.properties
+
+# Server Configuration
+server.port=8080
+server.servlet.context-path=/api
+
+# H2 Database Configuration
+spring.datasource.url=jdbc:h2:mem:petcontroldb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+
+# JPA Configuration
+spring.jpa.hibernate.ddl-auto=create-drop
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+
+# H2 Console (for development)
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2-console
+
+# JWT Configuration
+jwt.secret=5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437
+jwt.expiration=86400000
+
+# Swagger/OpenAPI Configuration
+springdoc.api-docs.path=/api-docs
+springdoc.swagger-ui.path=/swagger-ui.html
+springdoc.swagger-ui.operationsSorter=method
+
+# CORS Configuration
+cors.allowed-origins=http://localhost:5173,http://localhost:3000
+
+# Logging
+logging.level.com.petcontrol=DEBUG
+logging.level.org.springframework.security=DEBUG

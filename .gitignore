@@ -1,0 +1,51 @@
+# Dependencias
+node_modules/
+target/
+.venv/
+package-lock.json
+
+# IDE
+.vscode/
+.idea/
+*.iml
+.settings/
+.project
+.classpath
+
+# Logs
+*.log
+logs/
+
+# Sistema Operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archivos temporales
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Build
+dist/
+build/
+out/
+
+# Uploads temporales
+uploads/
+
+# Variables de entorno
+.env
+.env.local
+.env.production
+
+# Coverage
+coverage/
+*.lcov
+
+# Misc
+.cache/
+.npm/
+.eslintcache

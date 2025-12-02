@@ -1,0 +1,13 @@
+$ cd /workspace/petcontrol-backend && mvn clean compile
+bash: line 1: mvn: command not found
+$ cd /workspace/petcontrol-frontend && npm run lint
+
+npm ERR! Missing script: "lint"
+npm ERR! 
+npm ERR! Did you mean this?
+npm ERR!     npm link # Symlink a package folder
+npm ERR! 
+npm ERR! To see a list of scripts, run:
+npm ERR!   npm run
+
+npm ERR! A complete log of this run can be found in: /root/.npm/_logs/2025-11-27T20_16_34_009Z-debug-0.log

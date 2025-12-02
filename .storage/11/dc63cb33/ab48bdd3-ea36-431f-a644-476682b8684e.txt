@@ -1,0 +1,102 @@
+$ find /workspace -type f -name "*" | head -20
+/workspace/.git/COMMIT_EDITMSG
+/workspace/.git/HEAD
+/workspace/.git/config
+/workspace/.git/description
+/workspace/.git/hooks/applypatch-msg.sample
+/workspace/.git/hooks/commit-msg.sample
+/workspace/.git/hooks/fsmonitor-watchman.sample
+/workspace/.git/hooks/post-checkout
+/workspace/.git/hooks/post-commit
+/workspace/.git/hooks/post-merge
+/workspace/.git/hooks/post-update.sample
+/workspace/.git/hooks/pre-applypatch.sample
+/workspace/.git/hooks/pre-commit.sample
+/workspace/.git/hooks/pre-merge-commit.sample
+/workspace/.git/hooks/pre-push
+/workspace/.git/hooks/pre-push.sample
+/workspace/.git/hooks/pre-rebase.sample
+/workspace/.git/hooks/pre-receive.sample
+/workspace/.git/hooks/prepare-commit-msg.sample
+/workspace/.git/hooks/push-to-checkout.sample
+$ ls -la /workspace
+
+total 443
+drwxr-xr-x 56 root root 233472 Nov 27 07:26 .
+drwxr-xr-x  1 root root    130 Nov 27 07:32 ..
+drwxr-xr-x  2 root root   4096 Nov 27 07:25 .MGXTools
+drwxr-xr-x 51 root root 212992 Nov 27 07:17 .git
+-rw-r--r--  1 root root   1472 Nov 27 07:17 .gitattributes
+-rw-r--r--  1 root root    476 Nov 27 07:17 .gitignore
+-rw-r--r--  1 root root    189 Nov 27 07:26 .timeline.json
+$ find /workspace -type f \( -name "*.pdf" -o -name "*.docx" -o -name "*.txt" -o -name "*.md" -o -name "*.json" -o -name "*.csv" -o -name "*.xlsx" -o -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" \) 2>/dev/null
+
+/workspace/.timeline.json
+$ ls -la /tmp/uploads 2>/dev/null || ls -la /uploads 2>/dev/null || echo "No upload directory found"
+
+No upload directory found
+$ ls -la /workspace/uploads/
+
+total 13531
+drwxr-xr-x  8 root root 4542464 Nov 27 07:32 .
+drwxr-xr-x 63 root root 4775936 Nov 27 07:30 ..
+-rw-r--r--  1 root root  120897 Nov 27 07:32 fullStack_listo.zip
+drwxr-xr-x  6 root root 4415488 Nov 27 07:30 p3_Fullstack
+$ cd /workspace/uploads && unzip -q fullStack_listo.zip && ls -la
+
+total 13675
+drwxr-xr-x  9 root root 4546560 Nov 27 07:32 .
+drwxr-xr-x 63 root root 4775936 Nov 27 07:30 ..
+drwxrwxrwx  4 root root  143360 Oct 25 05:27 fullStack_listo
+-rw-r--r--  1 root root  120897 Nov 27 07:32 fullStack_listo.zip
+drwxr-xr-x  6 root root 4415488 Nov 27 07:30 p3_Fullstack
+$ find /workspace/uploads/p3_Fullstack -type f | head -20
+
+/workspace/uploads/p3_Fullstack/DSY1104 Evaluación Parcial 3 - Anexo 1 Instrucciones.pdf
+/workspace/uploads/p3_Fullstack/DSY1104 Evaluación Parcial 3 - Anexo 2 Documentación APIs e Integración.docx
+/workspace/uploads/p3_Fullstack/DSY1104 Evaluación Parcial 3 - Anexo 3 Documentación APIs.xlsx
+/workspace/uploads/p3_Fullstack/DSY1104 Evaluación Parcial 3 - Anexo 4 Manual de usuario.docx
+$ tree /workspace/uploads/p3_Fullstack -I 'node_modules|site-packages' -L 3
+
+/workspace/uploads/p3_Fullstack
+├── DSY1104 Evaluación Parcial 3 - Anexo 1 Instrucciones.pdf
+├── DSY1104 Evaluación Parcial 3 - Anexo 2 Documentación APIs e Integración.docx
+├── DSY1104 Evaluación Parcial 3 - Anexo 3 Documentación APIs.xlsx
+└── DSY1104 Evaluación Parcial 3 - Anexo 4 Manual de usuario.docx
+
+1 directory, 4 files
+$ tree /workspace/uploads/fullStack_listo -I 'node_modules|site-packages' -L 3
+
+/workspace/uploads/fullStack_listo
+├── PetControl_RF_RNF_SIMPLES (1).xlsx
+└── petcontrol-react.zip
+
+1 directory, 2 files
+$ cd /workspace/uploads/fullStack_listo && unzip -q petcontrol-react.zip && ls -la
+
+total 5487
+drwxrwxrwx  5 root root  147456 Nov 27 07:33 .
+drwxr-xr-x 11 root root 4685824 Nov 27 07:32 ..
+-rw-rw-rw-  1 root root   12662 Oct 21 16:13 PetControl_RF_RNF_SIMPLES (1).xlsx
+drwxr-xr-x 59 root root  651264 Oct 24 19:41 petRegistre-main
+-rw-rw-rw-  1 root root  121167 Oct 25 05:25 petcontrol-react.zip
+$ tree /workspace/uploads/fullStack_listo -I 'node_modules|site-packages' -L 2
+
+/workspace/uploads/fullStack_listo
+├── PetControl_RF_RNF_SIMPLES (1).xlsx
+├── petRegistre-main
+│   ├── README.md
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── karma.conf.cjs
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── petcontrol-react
+│   ├── petcontrol-react.code-workspace
+│   ├── public
+│   ├── spec
+│   ├── src
+│   └── vite.config.js
+└── petcontrol-react.zip
+
+6 directories, 10 files

@@ -1,0 +1,9 @@
+$ cd /workspace/petcontrol-backend && find . -name "application-*.properties" -type f
+./src/main/resources/application-h2.properties
+$ cd /workspace/petcontrol-backend && rm -f ./src/main/resources/application-h2.properties
+
+$ cd /workspace/petcontrol-backend && find . -name "*.md" -type f | grep -i mysql
+
+./CONFIGURACION_MYSQL.md
+$ cd /workspace/petcontrol-backend && rm -f CONFIGURACION_MYSQL.md README_MYSQL.md INSTALACION_MYSQL.md
+

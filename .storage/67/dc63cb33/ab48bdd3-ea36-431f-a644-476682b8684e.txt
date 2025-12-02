@@ -1,0 +1,655 @@
+$ find /workspace -type f -name "*" | head -20
+/workspace/.git/COMMIT_EDITMSG
+/workspace/.git/HEAD
+/workspace/.git/config
+/workspace/.git/description
+/workspace/.git/hooks/applypatch-msg.sample
+/workspace/.git/hooks/commit-msg.sample
+/workspace/.git/hooks/fsmonitor-watchman.sample
+/workspace/.git/hooks/post-checkout
+/workspace/.git/hooks/post-commit
+/workspace/.git/hooks/post-merge
+/workspace/.git/hooks/post-update.sample
+/workspace/.git/hooks/pre-applypatch.sample
+/workspace/.git/hooks/pre-commit.sample
+/workspace/.git/hooks/pre-merge-commit.sample
+/workspace/.git/hooks/pre-push
+/workspace/.git/hooks/pre-push.sample
+/workspace/.git/hooks/pre-rebase.sample
+/workspace/.git/hooks/pre-receive.sample
+/workspace/.git/hooks/prepare-commit-msg.sample
+/workspace/.git/hooks/push-to-checkout.sample
+$ ls -la /workspace
+
+total 443
+drwxr-xr-x 56 root root 233472 Nov 27 07:26 .
+drwxr-xr-x  1 root root    130 Nov 27 07:32 ..
+drwxr-xr-x  2 root root   4096 Nov 27 07:25 .MGXTools
+drwxr-xr-x 51 root root 212992 Nov 27 07:17 .git
+-rw-r--r--  1 root root   1472 Nov 27 07:17 .gitattributes
+-rw-r--r--  1 root root    476 Nov 27 07:17 .gitignore
+-rw-r--r--  1 root root    189 Nov 27 07:26 .timeline.json
+$ find /workspace -type f \( -name "*.pdf" -o -name "*.docx" -o -name "*.txt" -o -name "*.md" -o -name "*.json" -o -name "*.csv" -o -name "*.xlsx" -o -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" \) 2>/dev/null
+
+/workspace/.timeline.json
+$ ls -la /tmp/uploads 2>/dev/null || ls -la /uploads 2>/dev/null || echo "No upload directory found"
+
+No upload directory found
+$ ls -la /workspace/uploads/
+
+total 13531
+drwxr-xr-x  8 root root 4542464 Nov 27 07:32 .
+drwxr-xr-x 63 root root 4775936 Nov 27 07:30 ..
+-rw-r--r--  1 root root  120897 Nov 27 07:32 fullStack_listo.zip
+drwxr-xr-x  6 root root 4415488 Nov 27 07:30 p3_Fullstack
+$ cd /workspace/uploads && unzip -q fullStack_listo.zip && ls -la
+
+total 13675
+drwxr-xr-x  9 root root 4546560 Nov 27 07:32 .
+drwxr-xr-x 63 root root 4775936 Nov 27 07:30 ..
+drwxrwxrwx  4 root root  143360 Oct 25 05:27 fullStack_listo
+-rw-r--r--  1 root root  120897 Nov 27 07:32 fullStack_listo.zip
+drwxr-xr-x  6 root root 4415488 Nov 27 07:30 p3_Fullstack
+$ find /workspace/uploads/p3_Fullstack -type f | head -20
+
+/workspace/uploads/p3_Fullstack/DSY1104 Evaluación Parcial 3 - Anexo 1 Instrucciones.pdf
+/workspace/uploads/p3_Fullstack/DSY1104 Evaluación Parcial 3 - Anexo 2 Documentación APIs e Integración.docx
+/workspace/uploads/p3_Fullstack/DSY1104 Evaluación Parcial 3 - Anexo 3 Documentación APIs.xlsx
+/workspace/uploads/p3_Fullstack/DSY1104 Evaluación Parcial 3 - Anexo 4 Manual de usuario.docx
+$ tree /workspace/uploads/p3_Fullstack -I 'node_modules|site-packages' -L 3
+
+/workspace/uploads/p3_Fullstack
+├── DSY1104 Evaluación Parcial 3 - Anexo 1 Instrucciones.pdf
+├── DSY1104 Evaluación Parcial 3 - Anexo 2 Documentación APIs e Integración.docx
+├── DSY1104 Evaluación Parcial 3 - Anexo 3 Documentación APIs.xlsx
+└── DSY1104 Evaluación Parcial 3 - Anexo 4 Manual de usuario.docx
+
+1 directory, 4 files
+$ tree /workspace/uploads/fullStack_listo -I 'node_modules|site-packages' -L 3
+
+/workspace/uploads/fullStack_listo
+├── PetControl_RF_RNF_SIMPLES (1).xlsx
+└── petcontrol-react.zip
+
+1 directory, 2 files
+$ cd /workspace/uploads/fullStack_listo && unzip -q petcontrol-react.zip && ls -la
+
+total 5487
+drwxrwxrwx  5 root root  147456 Nov 27 07:33 .
+drwxr-xr-x 11 root root 4685824 Nov 27 07:32 ..
+-rw-rw-rw-  1 root root   12662 Oct 21 16:13 PetControl_RF_RNF_SIMPLES (1).xlsx
+drwxr-xr-x 59 root root  651264 Oct 24 19:41 petRegistre-main
+-rw-rw-rw-  1 root root  121167 Oct 25 05:25 petcontrol-react.zip
+$ tree /workspace/uploads/fullStack_listo -I 'node_modules|site-packages' -L 2
+
+/workspace/uploads/fullStack_listo
+├── PetControl_RF_RNF_SIMPLES (1).xlsx
+├── petRegistre-main
+│   ├── README.md
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── karma.conf.cjs
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── petcontrol-react
+│   ├── petcontrol-react.code-workspace
+│   ├── public
+│   ├── spec
+│   ├── src
+│   └── vite.config.js
+└── petcontrol-react.zip
+
+6 directories, 10 files
+$ find /workspace/uploads -name "DSY1104 Evaluación Parcial 3_EE_EP_Estudiante.pdf" -type f
+
+/workspace/uploads/DSY1104 Evaluación Parcial 3_EE_EP_Estudiante.pdf
+$ ls -la /workspace/uploads/*.pdf
+
+-rw-r--r-- 1 root root 316191 Nov 27 07:35 /workspace/uploads/DSY1104 Evaluación Parcial 3_EE_EP_Estudiante.pdf
+$ find /workspace/uploads -name "*.pdf" -type f
+
+/workspace/uploads/DSY1104 Evaluación Parcial 3_EE_EP_Estudiante.pdf
+/workspace/uploads/p3_Fullstack/DSY1104 Evaluación Parcial 3 - Anexo 1 Instrucciones.pdf
+$ cd /workspace/uploads/fullStack_listo/petRegistre-main && cat package.json
+
+{
+  "name": "petcontrol-react",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "karma start karma.conf.cjs",
+    "test:one": "karma start karma.conf.cjs --single-run",
+    "test:watch": "karma start karma.conf.cjs --auto-watch --no-single-run",
+    "dev:test": "concurrently \"npm run dev\" \"npm run test:watch\""
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "chart.js": "^4.5.1",
+    "react": "^18.3.1",
+    "react-chartjs-2": "^5.3.0",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.4",
+    "@babel/preset-env": "^7.20.0",
+    "@babel/preset-react": "^7.22.5",
+    "@testing-library/react": "^13.4.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "babel-loader": "^9.1.0",
+    "concurrently": "^8.2.2",
+    "jasmine-core": "^5.12.0",
+    "karma": "^6.4.4",
+    "karma-chrome-launcher": "^3.2.0",
+    "karma-coverage": "^2.2.1",
+    "karma-firefox-launcher": "^2.1.3",
+    "karma-jasmine": "^5.1.0",
+    "karma-sourcemap-loader": "^0.4.0",
+    "karma-spec-reporter": "^0.0.36",
+    "karma-webpack": "^5.0.1",
+    "vite": "^5.4.0",
+    "webpack": "^5.102.1",
+    "webpack-cli": "^5.1.4"
+  }
+}
+$ tree /workspace/uploads/fullStack_listo/petRegistre-main/src -L 2
+
+/workspace/uploads/fullStack_listo/petRegistre-main/src
+├── App.css
+├── App.jsx
+├── assets
+│   └── react.svg
+├── context
+│   └── AppContext.jsx
+├── data
+│   └── tiendaDB.js
+├── index.css
+├── main.jsx
+├── pages
+│   ├── Admin.jsx
+│   ├── Login.jsx
+│   └── MisMascotas.jsx
+└── router
+    └── RequiereSesion.jsx
+
+6 directories, 11 files
+$ cd /workspace/uploads/fullStack_listo/petRegistre-main && cat src/App.jsx
+
+
+import { Routes, Route, Link, useNavigate } from 'react-router-dom'
+import { useApp } from './context/AppContext'
+import Login from './pages/Login'
+import MisMascotas from './pages/MisMascotas'
+import Admin from './pages/Admin'
+import RequiereSesion from './router/RequiereSesion.jsx' 
+
+
+if (!RequiereSesion) {
+  throw new Error('Import error: "./router/RequiereSesion.jsx" no cargado. Verifica src/router/RequiereSesion.jsx y mayúsculas/minúsculas.')
+}
+
+function Home(){
+  const nav = useNavigate()
+  return (
+    <div className="container py-5">
+      <h2 className="mb-3">Libreta digital de mascotas</h2>
+      <p className="mb-4">Registra y gestiona las mascotas de tu cuenta.</p>
+      <div className="d-flex gap-2">
+        <button className="btn btn-primary" onClick={()=>nav('/login')}>Ingresar / Crear cuenta</button>
+        <button className="btn btn-outline-secondary" onClick={()=>nav('/mis-mascotas')}>Ir a Mis Mascotas</button>
+      </div>
+    </div>
+  )
+}
+
+export default function App(){
+  const { usuarioActual, logout } = useApp()
+  return (
+    <>
+      <nav className="navbar navbar-expand-lg bg-light px-3">
+        <Link className="navbar-brand" to="/">PetControl</Link>
+        <div className="navbar-nav">
+          <Link className="nav-link" to="/mis-mascotas">Mis Mascotas</Link>
+          <Link className="nav-link" to="/admin">Administrador</Link>
+        </div>
+        <div className="ms-auto">
+          {usuarioActual
+            ? <button className="btn btn-outline-secondary btn-sm" onClick={logout}>
+                Salir ({usuarioActual.email})
+              </button>
+            : <Link className="btn btn-primary btn-sm" to="/login">Ingresar</Link>}
+        </div>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Home/>} />
+        <Route path="/login" element={<Login/>} />
+        <Route path="/mis-mascotas" element={
+          <RequiereSesion><MisMascotas/></RequiereSesion>
+        } />
+        <Route path="/admin" element={
+          <RequiereSesion>
+            {usuarioActual && usuarioActual.email === 'admin@admin.cl' ? <Admin/> : <div className="container py-5"><h3>Acceso denegado</h3><p>Solo administradores pueden acceder a esta sección.</p></div>}
+          </RequiereSesion>
+        } />
+      </Routes>
+    </>
+  )
+}
+
+$ cd /workspace/uploads/fullStack_listo/petRegistre-main && cat src/context/AppContext.jsx
+
+
+import { createContext, useContext, useEffect, useState } from 'react'
+import {
+  initDB, crearUsuario, obtenerUsuarioPorEmail,
+  crearMascota, listarMascotasPorUsuario, actualizarMascota, eliminarMascota
+} from '../data/tiendaDB'
+
+const Ctx = createContext()
+
+export function AppProvider({ children }){
+  const [usuarioActual, setUsuarioActual] = useState(null)
+  const [carrito, setCarrito] = useState([])
+
+  useEffect(()=>{ initDB() }, [])
+
+  // Cargar sesión persistente al montar
+  useEffect(() => {
+    const savedUser = localStorage.getItem('usuarioActual')
+    if (savedUser) {
+      try {
+        const user = JSON.parse(savedUser)
+        setUsuarioActual(user)
+      } catch (e) {
+        localStorage.removeItem('usuarioActual')
+      }
+    }
+  }, [])
+
+  function login(user){
+    setUsuarioActual(user)
+    localStorage.setItem('usuarioActual', JSON.stringify(user))
+    return user
+  }
+  function logout(){
+    setUsuarioActual(null)
+    localStorage.removeItem('usuarioActual')
+  }
+
+  function isAdmin(){
+    return usuarioActual && usuarioActual.email === 'admin@admin.cl'
+  }
+
+  
+  const agregarAlCarrito = (prod, qty=1)=> setCarrito(c=>{
+    const i=c.findIndex(x=>x.id===prod.id)
+    if(i>=0){ const n=[...c]; n[i]={...n[i], cantidad:n[i].cantidad+qty}; return n }
+    return [...c, {id:prod.id, nombre:prod.nombre, precio:prod.precio, cantidad:qty}]
+  })
+  const quitarDelCarrito = id => setCarrito(c=>c.filter(x=>x.id!==id))
+  const vaciarCarrito = () => setCarrito([])
+
+
+  function obtenerMisMascotas(){
+    if (!usuarioActual) return []
+    return listarMascotasPorUsuario(usuarioActual.id)
+  }
+  function agregarMascota(datos){
+    if (!usuarioActual) throw new Error('Debes iniciar sesión')
+    return crearMascota({ ...datos, usuarioId: usuarioActual.id })
+  }
+  function editarMascota(id, patch){
+    if (!usuarioActual) throw new Error('Debes iniciar sesión')
+    return actualizarMascota(id, patch)
+  }
+  function borrarMascota(id){
+    if (!usuarioActual) throw new Error('Debes iniciar sesión')
+    eliminarMascota(id)
+  }
+
+  return (
+    <Ctx.Provider value={{
+      usuarioActual, login, logout, isAdmin,
+      carrito, agregarAlCarrito, quitarDelCarrito, vaciarCarrito,
+      obtenerMisMascotas, agregarMascota, editarMascota, borrarMascota
+    }}>
+      {children}
+    </Ctx.Provider>
+  )
+}
+
+export const useApp = ()=> useContext(Ctx)
+$ cd /workspace/uploads/fullStack_listo/petRegistre-main && cat src/pages/Login.jsx
+
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useApp } from '../context/AppContext.jsx'
+import { loginUsuario, crearUsuario, obtenerUsuarioPorEmail } from '../data/tiendaDB.js'
+
+export default function Login() {
+  const [formData, setFormData] = useState({ email: '', password: '' })
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [modo, setModo] = useState('login')
+  const [tipoUsuario, setTipoUsuario] = useState('usuario')
+  
+  const { login } = useApp()
+  const navigate = useNavigate()
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormData(prev => ({ ...prev, [name]: value }))
+    if (error) setError('')
+  }
+
+  const validarFormulario = () => {
+    if (!formData.email.trim()) {
+      setError('Por favor, ingresa tu email')
+      return false
+    }
+    if (!formData.email.includes('@')) {
+      setError('Por favor, ingresa un email válido')
+      return false
+    }
+    if (!formData.password.trim()) {
+      setError('Por favor, ingresa tu contraseña')
+      return false
+    }
+    if (formData.password.length < 3) {
+      setError('La contraseña debe tener al menos 3 caracteres')
+      return false
+    }
+    return true
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setError('')
+    setLoading(true)
+
+    if (!validarFormulario()) {
+      setLoading(false)
+      return
+    }
+
+    try {
+      const email = formData.email.trim().toLowerCase()
+      const password = formData.password
+
+      if (modo === 'login') {
+        const usuario = loginUsuario(email, password)
+        if (usuario) {
+          login(usuario)
+          const redirectTo = tipoUsuario === 'admin' && usuario.email === 'admin@admin.cl' 
+            ? '/admin' 
+            : '/mis-mascotas'
+          setTimeout(() => navigate(redirectTo), 500)
+        } else {
+          setError('⚠️ Email o contraseña incorrectos')
+        }
+      } else {
+        if (obtenerUsuarioPorEmail(email)) {
+          setError('⚠️ Este email ya está registrado')
+        } else {
+          const nuevoUsuario = crearUsuario({ email, nombre: '', password })
+          login(nuevoUsuario)
+          setTimeout(() => navigate('/mis-mascotas'), 500)
+        }
+      }
+    } catch (err) {
+      setError('❌ Error inesperado. Intenta nuevamente.')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const cambiarModo = () => {
+    setModo(modo === 'login' ? 'registro' : 'login')
+    setError('')
+    setFormData({ email: '', password: '' })
+  }
+
+  return (
+    <div className="container" style={{ maxWidth: '500px' }}>
+      <div className="card my-5">
+        <div className="card-body">
+          <h2 className="card-title text-center mb-4">
+            {modo === 'login' ? 'Iniciar Sesión' : 'Crear Cuenta'}
+          </h2>
+          
+          {modo === 'login' && (
+            <>
+              <div className="alert alert-info small mb-3">
+                <strong>Admin:</strong> admin@admin.cl / admin.123
+              </div>
+              
+              <div className="mb-3">
+                <label className="form-label">Tipo de Usuario</label>
+                <div className="d-flex gap-2">
+                  <button
+                    type="button"
+                    className={`btn btn-sm ${tipoUsuario === 'usuario' ? 'btn-primary' : 'btn-outline-primary'}`}
+                    onClick={() => setTipoUsuario('usuario')}
+                    disabled={loading}
+                  >
+                    Usuario
+                  </button>
+                  <button
+                    type="button"
+                    className={`btn btn-sm ${tipoUsuario === 'admin' ? 'btn-warning' : 'btn-outline-warning'}`}
+                    onClick={() => setTipoUsuario('admin')}
+                    disabled={loading}
+                  >
+                    Administrador
+                  </button>
+                </div>
+              </div>
+            </>
+          )}
+
+          {error && (
+            <div className="alert alert-danger alert-dismissible fade show">
+              <strong>{error}</strong>
+              <button type="button" className="btn-close" onClick={() => setError('')}></button>
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} noValidate>
+            <div className="mb-3">
+              <label htmlFor="email" className="form-label">Email</label>
+              <input 
+                type="text"
+                className="form-control"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                disabled={loading}
+                placeholder="tu@email.com"
+              />
+            </div>
+            
+            <div className="mb-3">
+              <label htmlFor="password" className="form-label">Contraseña</label>
+              <input 
+                type="password"
+                className="form-control"
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                disabled={loading}
+                placeholder="Tu contraseña"
+              />
+            </div>
+
+            <div className="d-grid">
+              <button type="submit" className="btn btn-primary" disabled={loading}>
+                {loading ? (
+                  <>
+                    <span className="spinner-border spinner-border-sm me-2"></span>
+                    {modo === 'login' ? 'Ingresando...' : 'Registrando...'}
+                  </>
+                ) : (
+                  modo === 'login' ? 'Ingresar' : 'Registrarse'
+                )}
+              </button>
+            </div>
+          </form>
+
+          <div className="text-center mt-3">
+            <p>
+              {modo === 'login' ? '¿No tienes cuenta?' : '¿Ya tienes cuenta?'}{' '}
+              <button className="btn btn-link p-0" onClick={cambiarModo} disabled={loading}>
+                {modo === 'login' ? 'Regístrate aquí' : 'Inicia sesión'}
+              </button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}$ cd /workspace && cp -r /workspace/uploads/fullStack_listo/petRegistre-main ./petcontrol-frontend
+
+$ cd /workspace && mkdir -p petcontrol-backend/src/main/java/com/petcontrol && mkdir -p petcontrol-backend/src/main/resources
+
+$ cd /workspace/petcontrol-frontend && cat package.json
+
+{
+  "name": "petcontrol-react",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "karma start karma.conf.cjs",
+    "test:one": "karma start karma.conf.cjs --single-run",
+    "test:watch": "karma start karma.conf.cjs --auto-watch --no-single-run",
+    "dev:test": "concurrently \"npm run dev\" \"npm run test:watch\""
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "chart.js": "^4.5.1",
+    "react": "^18.3.1",
+    "react-chartjs-2": "^5.3.0",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.4",
+    "@babel/preset-env": "^7.20.0",
+    "@babel/preset-react": "^7.22.5",
+    "@testing-library/react": "^13.4.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "babel-loader": "^9.1.0",
+    "concurrently": "^8.2.2",
+    "jasmine-core": "^5.12.0",
+    "karma": "^6.4.4",
+    "karma-chrome-launcher": "^3.2.0",
+    "karma-coverage": "^2.2.1",
+    "karma-firefox-launcher": "^2.1.3",
+    "karma-jasmine": "^5.1.0",
+    "karma-sourcemap-loader": "^0.4.0",
+    "karma-spec-reporter": "^0.0.36",
+    "karma-webpack": "^5.0.1",
+    "vite": "^5.4.0",
+    "webpack": "^5.102.1",
+    "webpack-cli": "^5.1.4"
+  }
+}
+$ cd /workspace/petcontrol-frontend && npm install axios
+
+npm WARN deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+npm WARN deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+npm WARN deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+
+added 519 packages, and audited 520 packages in 1m
+
+96 packages are looking for funding
+  run `npm fund` for details
+
+2 moderate severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+npm notice 
+npm notice New major version of npm available! 10.2.4 -> 11.6.4
+npm notice Changelog: <https://github.com/npm/cli/releases/tag/v11.6.4>
+npm notice Run `npm install -g npm@11.6.4` to update!
+npm notice 
+$ cd /workspace/petcontrol-frontend && cat package.json | grep axios || echo "axios no encontrado"
+
+    "axios": "^1.13.2",
+$ cd /workspace && tree -L 2 -I 'node_modules|target|.git' petcontrol-backend petcontrol-frontend
+
+petcontrol-backend
+├── README.md
+├── pom.xml
+└── src
+    └── main
+petcontrol-frontend
+├── README.md
+├── eslint.config.js
+├── index.html
+├── karma.conf.cjs
+├── package-lock.json
+├── package.json
+├── petcontrol-react
+│   ├── README.md
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── public
+│   ├── src
+│   └── vite.config.js
+├── petcontrol-react.code-workspace
+├── public
+│   ├── images
+│   └── vite.svg
+├── spec
+│   ├── admin_cascada.spec.js
+│   ├── admin_eliminar_cascada.spec.js
+│   ├── guards.spec.js
+│   ├── index.js
+│   ├── mascota_crud.spec.js
+│   ├── mascotas.spec.js
+│   ├── mascotas_por_usuario.spec.js
+│   ├── sanity.spec.js
+│   ├── usuarios.spec.js
+│   └── validaciones.spec.js
+├── src
+│   ├── App.css
+│   ├── App.jsx
+│   ├── assets
+│   ├── context
+│   ├── data
+│   ├── index.css
+│   ├── main.jsx
+│   ├── pages
+│   ├── router
+│   └── services
+└── vite.config.js
+
+17 directories, 31 files
+$ cd /workspace && ls -la *.md
+
+-rw-r--r-- 1 root root 15590 Nov 27 07:41 DOCUMENTACION_INTEGRACION.md
+-rw-r--r-- 1 root root 12569 Nov 27 07:42 MANUAL_USUARIO.md
+-rw-r--r-- 1 root root 11252 Nov 27 07:43 README.md
+-rw-r--r-- 1 root root  1769 Nov 27 07:39 todo.md
+$ cd /workspace/petcontrol-backend && mvn clean install -DskipTests
+
+bash: line 79: mvn: command not found
+$ java -version
+
+bash: line 82: java: command not found

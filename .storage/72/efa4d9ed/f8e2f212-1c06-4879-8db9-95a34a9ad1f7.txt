@@ -1,0 +1,21 @@
+$ cd /workspace && find petcontrol-backend/src -name "*.java" | head -20
+petcontrol-backend/src/main/java/com/petcontrol/PetControlApplication.java
+petcontrol-backend/src/main/java/com/petcontrol/config/CorsConfig.java
+petcontrol-backend/src/main/java/com/petcontrol/config/DataInitializer.java
+petcontrol-backend/src/main/java/com/petcontrol/config/OpenApiConfig.java
+petcontrol-backend/src/main/java/com/petcontrol/config/SecurityConfig.java
+petcontrol-backend/src/main/java/com/petcontrol/controller/AdminController.java
+petcontrol-backend/src/main/java/com/petcontrol/controller/AuthController.java
+petcontrol-backend/src/main/java/com/petcontrol/controller/MascotaController.java
+petcontrol-backend/src/main/java/com/petcontrol/dto/AuthResponse.java
+petcontrol-backend/src/main/java/com/petcontrol/dto/LoginRequest.java
+petcontrol-backend/src/main/java/com/petcontrol/dto/MascotaRequest.java
+petcontrol-backend/src/main/java/com/petcontrol/dto/MascotaResponse.java
+petcontrol-backend/src/main/java/com/petcontrol/dto/RegisterRequest.java
+petcontrol-backend/src/main/java/com/petcontrol/model/Mascota.java
+petcontrol-backend/src/main/java/com/petcontrol/model/Usuario.java
+petcontrol-backend/src/main/java/com/petcontrol/repository/MascotaRepository.java
+petcontrol-backend/src/main/java/com/petcontrol/repository/UsuarioRepository.java
+petcontrol-backend/src/main/java/com/petcontrol/security/CustomUserDetailsService.java
+petcontrol-backend/src/main/java/com/petcontrol/security/JwtRequestFilter.java
+petcontrol-backend/src/main/java/com/petcontrol/security/JwtUtil.java
