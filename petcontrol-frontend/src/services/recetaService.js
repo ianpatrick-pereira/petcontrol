@@ -1,25 +1,26 @@
-import api from '../config/api';
+import api from './api';
 
-// Get prescriptions for a pet
-export const getRecetasByMascota = async (mascotaId) => {
-  const response = await api.get(`/recetas/mascota/${mascotaId}`);
-  return response.data;
-};
-
-// Create new prescription (VETERINARIO, ADMIN)
-export const createReceta = async (recetaData) => {
+export const crearReceta = async (recetaData) => {
   const response = await api.post('/recetas', recetaData);
   return response.data;
 };
 
-// Update prescription
-export const updateReceta = async (id, recetaData) => {
-  const response = await api.put(`/recetas/${id}`, recetaData);
+export const obtenerTodasLasRecetas = async () => {
+  const response = await api.get('/recetas');
   return response.data;
 };
 
-// Delete prescription
-export const deleteReceta = async (id) => {
+export const obtenerRecetaPorId = async (id) => {
+  const response = await api.get(`/recetas/${id}`);
+  return response.data;
+};
+
+export const obtenerRecetasPorMascota = async (mascotaId) => {
+  const response = await api.get(`/recetas/mascota/${mascotaId}`);
+  return response.data;
+};
+
+export const eliminarReceta = async (id) => {
   const response = await api.delete(`/recetas/${id}`);
   return response.data;
 };
