@@ -1,0 +1,40 @@
+{
+    "tabs": {
+        "00": {
+            "tab_id": "00",
+            "cwd": "/workspace/uploads",
+            "observer": {
+                "block": "Terminal",
+                "uuid": "9ac317ea-3234-4238-b8ee-2ee1eb7261e1",
+                "enable_llm_stream": false,
+                "callback_url": ""
+            },
+            "shell_command": [
+                "bash"
+            ],
+            "command_terminator": "\n"
+        },
+        "01": {
+            "tab_id": "01",
+            "cwd": "/workspace/petcontrol-frontend",
+            "observer": {
+                "block": "Terminal",
+                "uuid": "69c354ff-a262-4f49-8038-4cfbca73ee1c",
+                "enable_llm_stream": false,
+                "callback_url": ""
+            },
+            "shell_command": [
+                "bash"
+            ],
+            "command_terminator": "\n"
+        }
+    },
+    "current_tab_id": "01",
+    "forbidden_commands": {
+        "run preview": "Use Deployer.deploy_to_public instead.",
+        "serve ": "Use Deployer.deploy_to_public instead.",
+        "python -m http.server": "Use python -u -m http.server port_number instead."
+    },
+    "timeout": 300.0,
+    "working_dir": "/workspace"
+}
