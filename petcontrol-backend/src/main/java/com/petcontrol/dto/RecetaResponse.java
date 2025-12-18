@@ -15,6 +15,9 @@ public class RecetaResponse {
     private Long id;
     private Long mascotaId;
     private String nombreMascota;
+    private Long clienteId;
+    private String clienteNombre;
+    private String clienteEmail;
     private String diagnostico;
     private String medicamentos;
     private String dosificacion;
@@ -28,6 +31,11 @@ public class RecetaResponse {
         response.setId(receta.getId());
         response.setMascotaId(receta.getMascota().getId());
         response.setNombreMascota(receta.getMascota().getNombre());
+        if (receta.getMascota().getUsuario() != null) {
+            response.setClienteId(receta.getMascota().getUsuario().getId());
+            response.setClienteNombre(receta.getMascota().getUsuario().getNombre());
+            response.setClienteEmail(receta.getMascota().getUsuario().getEmail());
+        }
         response.setDiagnostico(receta.getDiagnostico());
         response.setMedicamentos(receta.getMedicamentos());
         response.setDosificacion(receta.getDosificacion());

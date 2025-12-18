@@ -19,6 +19,8 @@ public class MascotaResponse {
     private String descripcion;
     private String imagen;
     private Long usuarioId;
+    private String nombreDueno;
+    private String emailDueno;
     private LocalDateTime fechaCreacion;
     private LocalDateTime fechaActualizacion;
     
@@ -32,6 +34,8 @@ public class MascotaResponse {
         response.setDescripcion(mascota.getDescripcion());
         response.setImagen(mascota.getImagen());
         response.setUsuarioId(mascota.getUsuario().getId());
+        response.setNombreDueno(mascota.getUsuario().getNombre());
+        response.setEmailDueno(mascota.getUsuario().getEmail());
         response.setFechaCreacion(mascota.getFechaCreacion());
         response.setFechaActualizacion(mascota.getFechaActualizacion());
         return response;

@@ -8,10 +8,12 @@ com\petcontrol\dto\VacunaResponse.class
 com\petcontrol\config\DataInitializer.class
 com\petcontrol\controller\AdminController.class
 com\petcontrol\controller\AuthController.class
+com\petcontrol\controller\VacunaController.class
 com\petcontrol\dto\AuthResponse.class
 com\petcontrol\repository\UsuarioRepository.class
 com\petcontrol\repository\VacunaRepository.class
 com\petcontrol\config\SecurityConfig.class
+com\petcontrol\controller\RecetaController.class
 com\petcontrol\repository\RecetaRepository.class
 com\petcontrol\config\OpenApiConfig.class
 com\petcontrol\PetControlApplication.class

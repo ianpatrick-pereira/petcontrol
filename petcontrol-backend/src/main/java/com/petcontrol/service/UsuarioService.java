@@ -63,18 +63,33 @@ public class UsuarioService {
     }
     
     public void deleteUsuario(Long id) {
-        Usuario usuario = usuarioRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
-        
-        // Verificar si el usuario tiene un email protegido - NO permitir eliminación
-        if (PROTECTED_EMAILS.contains(usuario.getEmail().toLowerCase().trim())) {
-            throw new RuntimeException("No se puede eliminar este usuario. Es un usuario protegido del sistema.");
-        }
-        
-        usuarioRepository.deleteById(id);
+        Usuario usuario = obtenerUsuario(id);
+        validarEmailProtegido(usuario);
+        usuarioRepository.delete(usuario);
     }
-    
+
+    public void eliminarClientePorId(Long id) {
+        Usuario usuario = obtenerUsuario(id);
+        if (!Usuario.Rol.CLIENTE.equals(usuario.getRol())) {
+            throw new RuntimeException("Solo se pueden eliminar usuarios con rol CLIENTE desde este endpoint");
+        }
+        validarEmailProtegido(usuario);
+        usuarioRepository.delete(usuario);
+    }
+
     public boolean existsByEmail(String email) {
         return usuarioRepository.existsByEmail(email.toLowerCase().trim());
+    }
+
+    private Usuario obtenerUsuario(Long id) {
+        return usuarioRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+    }
+
+    private void validarEmailProtegido(Usuario usuario) {
+        String emailNormalizado = usuario.getEmail().toLowerCase().trim();
+        if (PROTECTED_EMAILS.contains(emailNormalizado)) {
+            throw new RuntimeException("No se puede eliminar este usuario. Es un usuario protegido del sistema.");
+        }
     }
 }

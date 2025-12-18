@@ -16,6 +16,9 @@ public class VacunaResponse {
     private Long id;
     private Long mascotaId;
     private String nombreMascota;
+    private Long clienteId;
+    private String clienteNombre;
+    private String clienteEmail;
     private String nombreVacuna;
     private LocalDate fechaAplicacion;
     private LocalDate proximaDosis;
@@ -29,6 +32,11 @@ public class VacunaResponse {
         response.setId(vacuna.getId());
         response.setMascotaId(vacuna.getMascota().getId());
         response.setNombreMascota(vacuna.getMascota().getNombre());
+        if (vacuna.getMascota().getUsuario() != null) {
+            response.setClienteId(vacuna.getMascota().getUsuario().getId());
+            response.setClienteNombre(vacuna.getMascota().getUsuario().getNombre());
+            response.setClienteEmail(vacuna.getMascota().getUsuario().getEmail());
+        }
         response.setNombreVacuna(vacuna.getNombreVacuna());
         response.setFechaAplicacion(vacuna.getFechaAplicacion());
         response.setProximaDosis(vacuna.getProximaDosis());
