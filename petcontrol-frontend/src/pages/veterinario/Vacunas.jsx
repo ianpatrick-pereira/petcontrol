@@ -33,14 +33,12 @@ const Vacunas = () => {
   const fetchData = async () => {
     try {
       setLoading(true);
-      const [vacunasData, usuariosData] = await Promise.all([
+      const [vacunasData, clientesData] = await Promise.all([
         vacunaService.obtenerTodasLasVacunas(),
-        usuarioService.getAllUsuarios()
+        usuarioService.getAllClientes()
       ]);
       
       setVacunas(vacunasData);
-      // Filtrar solo clientes
-      const clientesData = usuariosData.filter(u => u.rol === 'CLIENTE');
       setClientes(clientesData);
     } catch (err) {
       showToast('Error al cargar datos: ' + (err.response?.data?.message || err.message), 'error');
@@ -56,9 +54,7 @@ const Vacunas = () => {
     
     if (clienteId) {
       try {
-        // Obtener mascotas del cliente seleccionado
-        const todasMascotas = await mascotaService.adminGetAllMascotas();
-        const mascotasCliente = todasMascotas.filter(m => m.usuario?.id === parseInt(clienteId));
+        const mascotasCliente = await mascotaService.getMascotasPorCliente(clienteId);
         setMascotas(mascotasCliente);
       } catch (err) {
         showToast('Error al cargar mascotas: ' + (err.response?.data?.message || err.message), 'error');
@@ -176,6 +172,7 @@ const Vacunas = () => {
                     <tr>
                       <th>ID</th>
                       <th>Mascota</th>
+                      <th>Dueño</th>
                       <th>Vacuna</th>
                       <th>Fecha Aplicación</th>
                       <th>Próxima Dosis</th>
@@ -190,6 +187,10 @@ const Vacunas = () => {
                         <td>
                           <i className="bi bi-heart-fill text-danger me-2"></i>
                           {vacuna.nombreMascota}
+                        </td>
+                        <td>
+                          <i className="bi bi-person-fill text-primary me-2"></i>
+                          {vacuna.nombreDueno}
                         </td>
                         <td>
                           <span className="badge bg-success">{vacuna.nombreVacuna}</span>
@@ -248,7 +249,7 @@ const Vacunas = () => {
                         <option value="">Seleccionar cliente</option>
                         {clientes.map((cliente) => (
                           <option key={cliente.id} value={cliente.id}>
-                            {cliente.nombre || cliente.email}
+                            {cliente.nombre} - {cliente.email}
                           </option>
                         ))}
                       </select>

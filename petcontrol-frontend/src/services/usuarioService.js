@@ -32,3 +32,9 @@ export const changePassword = async (oldPassword, newPassword) => {
   });
   return response.data;
 };
+
+// Get all clients (for veterinarians)
+export const getAllClientes = async () => {
+  const response = await api.get('/api/usuarios/clientes');
+  return response.data;
+};

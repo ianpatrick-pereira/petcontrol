@@ -16,7 +16,7 @@ const TodasMascotas = () => {
   const fetchMascotas = async () => {
     try {
       setLoading(true);
-      const data = await mascotaService.getAllMascotas();
+      const data = await mascotaService.adminGetAllMascotas();
       setMascotas(data);
       setError('');
     } catch (err) {
@@ -30,7 +30,7 @@ const TodasMascotas = () => {
     mascota.nombre?.toLowerCase().includes(searchTerm.toLowerCase()) ||
     mascota.especie?.toLowerCase().includes(searchTerm.toLowerCase()) ||
     mascota.raza?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    mascota.usuario?.nombre?.toLowerCase().includes(searchTerm.toLowerCase())
+    mascota.nombreDueno?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   if (loading) {
@@ -105,7 +105,7 @@ const TodasMascotas = () => {
                             <strong>Edad:</strong> {mascota.edad} años<br />
                           </>
                         )}
-                        <strong>Dueño:</strong> {mascota.usuario?.nombre || mascota.usuario?.email}
+                        <strong>Dueño:</strong> <i className="bi bi-person-fill text-primary me-1"></i>{mascota.nombreDueno || mascota.emailDueno}
                       </p>
                       {mascota.descripcion && (
                         <p className="card-text">

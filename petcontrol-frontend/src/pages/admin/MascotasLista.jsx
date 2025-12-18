@@ -44,7 +44,7 @@ const MascotasLista = () => {
     mascota.nombre?.toLowerCase().includes(searchTerm.toLowerCase()) ||
     mascota.especie?.toLowerCase().includes(searchTerm.toLowerCase()) ||
     mascota.raza?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    mascota.usuario?.nombre?.toLowerCase().includes(searchTerm.toLowerCase())
+    mascota.nombreDueno?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   if (loading) {
@@ -115,8 +115,8 @@ const MascotasLista = () => {
                       <td>{mascota.raza || '-'}</td>
                       <td>{mascota.edad ? `${mascota.edad} años` : '-'}</td>
                       <td>
-                        <i className="bi bi-person me-1"></i>
-                        {mascota.usuario?.nombre || mascota.usuario?.email || '-'}
+                        <i className="bi bi-person-fill text-primary me-1"></i>
+                        {mascota.nombreDueno || mascota.emailDueno || '-'}
                       </td>
                       <td className="text-center table-actions">
                         <Link

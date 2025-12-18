@@ -33,14 +33,12 @@ const Recetas = () => {
   const fetchData = async () => {
     try {
       setLoading(true);
-      const [recetasData, usuariosData] = await Promise.all([
+      const [recetasData, clientesData] = await Promise.all([
         recetaService.obtenerTodasLasRecetas(),
-        usuarioService.getAllUsuarios()
+        usuarioService.getAllClientes()
       ]);
       
       setRecetas(recetasData);
-      // Filtrar solo clientes
-      const clientesData = usuariosData.filter(u => u.rol === 'CLIENTE');
       setClientes(clientesData);
     } catch (err) {
       showToast('Error al cargar datos: ' + (err.response?.data?.message || err.message), 'error');
@@ -56,9 +54,7 @@ const Recetas = () => {
     
     if (clienteId) {
       try {
-        // Obtener mascotas del cliente seleccionado
-        const todasMascotas = await mascotaService.adminGetAllMascotas();
-        const mascotasCliente = todasMascotas.filter(m => m.usuario?.id === parseInt(clienteId));
+        const mascotasCliente = await mascotaService.getMascotasPorCliente(clienteId);
         setMascotas(mascotasCliente);
       } catch (err) {
         showToast('Error al cargar mascotas: ' + (err.response?.data?.message || err.message), 'error');
@@ -177,6 +173,7 @@ const Recetas = () => {
                     <tr>
                       <th>ID</th>
                       <th>Mascota</th>
+                      <th>Dueño</th>
                       <th>Diagnóstico</th>
                       <th>Medicamentos</th>
                       <th>Veterinario</th>
@@ -191,6 +188,10 @@ const Recetas = () => {
                         <td>
                           <i className="bi bi-heart-fill text-danger me-2"></i>
                           {receta.nombreMascota}
+                        </td>
+                        <td>
+                          <i className="bi bi-person-fill text-primary me-2"></i>
+                          {receta.nombreDueno}
                         </td>
                         <td>{receta.diagnostico}</td>
                         <td>
@@ -247,7 +248,7 @@ const Recetas = () => {
                         <option value="">Seleccionar cliente</option>
                         {clientes.map((cliente) => (
                           <option key={cliente.id} value={cliente.id}>
-                            {cliente.nombre || cliente.email}
+                            {cliente.nombre} - {cliente.email}
                           </option>
                         ))}
                       </select>
