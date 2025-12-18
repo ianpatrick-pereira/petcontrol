@@ -30,13 +30,21 @@ const UsuariosLista = () => {
   const handleDelete = async () => {
     if (!deleteModal.usuario) return;
 
+    // Proteger usuarios predefinidos
+    const protectedEmails = ['admin@admin.cl', 'veterinario@petcontrol.cl'];
+    if (protectedEmails.includes(deleteModal.usuario.email.toLowerCase())) {
+      window.alert('No se puede eliminar este usuario. Es un usuario protegido del sistema.');
+      setDeleteModal({ show: false, usuario: null });
+      return;
+    }
+
     try {
       await usuarioService.deleteUsuario(deleteModal.usuario.id);
       setUsuarios(usuarios.filter(u => u.id !== deleteModal.usuario.id));
       setDeleteModal({ show: false, usuario: null });
-      alert('Usuario eliminado correctamente');
+      window.alert('Usuario eliminado correctamente');
     } catch (err) {
-      alert('Error al eliminar usuario: ' + (err.response?.data?.message || err.message));
+      window.alert('Error al eliminar usuario: ' + (err.response?.data?.message || err.message));
     }
   };
 
@@ -70,10 +78,6 @@ const UsuariosLista = () => {
           <h4>Gestión de Usuarios</h4>
           <p className="text-muted">Administrar usuarios del sistema</p>
         </div>
-        <Link to="/admin/usuarios/nuevo" className="btn btn-primary">
-          <i className="bi bi-plus-circle me-2"></i>
-          Nuevo Usuario
-        </Link>
       </div>
 
       {error && (

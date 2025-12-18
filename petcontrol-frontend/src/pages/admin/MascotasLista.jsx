@@ -34,9 +34,9 @@ const MascotasLista = () => {
       await mascotaService.adminDeleteMascota(deleteModal.mascota.id);
       setMascotas(mascotas.filter(m => m.id !== deleteModal.mascota.id));
       setDeleteModal({ show: false, mascota: null });
-      alert('Mascota eliminada correctamente');
+      window.alert('Mascota eliminada correctamente');
     } catch (err) {
-      alert('Error al eliminar mascota: ' + (err.response?.data?.message || err.message));
+      window.alert('Error al eliminar mascota: ' + (err.response?.data?.message || err.message));
     }
   };
 

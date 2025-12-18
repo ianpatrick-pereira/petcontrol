@@ -75,12 +75,12 @@ const MisMascotas = () => {
       };
 
       await mascotaService.createMascota(mascotaData);
-      alert('Mascota agregada correctamente');
+      window.alert('¡Mascota agregada correctamente!');
       setShowModal(false);
       setFormData({ nombre: '', especie: '', raza: '', edad: '', descripcion: '', imagen: '' });
       fetchMascotas();
     } catch (err) {
-      alert('Error al agregar mascota: ' + (err.response?.data?.message || err.message));
+      window.alert('Error al agregar mascota: ' + (err.response?.data?.message || err.message));
     } finally {
       setSubmitting(false);
     }
@@ -93,9 +93,9 @@ const MisMascotas = () => {
       await mascotaService.deleteMascota(deleteModal.mascota.id);
       setMascotas(mascotas.filter(m => m.id !== deleteModal.mascota.id));
       setDeleteModal({ show: false, mascota: null });
-      alert('Mascota eliminada correctamente');
+      window.alert('Mascota eliminada correctamente');
     } catch (err) {
-      alert('Error al eliminar mascota: ' + (err.response?.data?.message || err.message));
+      window.alert('Error al eliminar mascota: ' + (err.response?.data?.message || err.message));
     }
   };
 

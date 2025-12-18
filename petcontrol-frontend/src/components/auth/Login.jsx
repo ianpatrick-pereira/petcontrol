@@ -9,7 +9,6 @@ const Login = () => {
   });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
   const { login } = useAuth();
 
   const handleChange = (e) => {
@@ -38,8 +37,6 @@ const Login = () => {
 
     if (!formData.password) {
       newErrors.password = 'La contraseña es obligatoria';
-    } else if (formData.password.length < 4 || formData.password.length > 10) {
-      newErrors.password = 'La contraseña debe tener entre 4 y 10 caracteres';
     }
 
     return newErrors;
@@ -47,7 +44,6 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrorMessage('');
 
     const newErrors = validate();
     if (Object.keys(newErrors).length > 0) {
@@ -60,7 +56,7 @@ const Login = () => {
     setLoading(false);
 
     if (!result.success) {
-      setErrorMessage(result.message);
+      window.alert('Error al iniciar sesión: ' + result.message);
     }
   };
 
@@ -75,12 +71,6 @@ const Login = () => {
                 <h3 className="mt-2">PetControl</h3>
                 <p className="text-muted">Iniciar Sesión</p>
               </div>
-
-              {errorMessage && (
-                <div className="alert alert-danger" role="alert">
-                  {errorMessage}
-                </div>
-              )}
 
               <form onSubmit={handleSubmit}>
                 <div className="mb-3">
