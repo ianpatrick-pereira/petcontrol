@@ -21,6 +21,8 @@ import MascotaDetalle from './pages/cliente/MascotaDetalle';
 // Veterinario pages
 import TodasMascotas from './pages/veterinario/TodasMascotas';
 import MascotaInfo from './pages/veterinario/MascotaInfo';
+import Recetas from './pages/veterinario/Recetas';
+import Vacunas from './pages/veterinario/Vacunas';
 
 // Admin pages
 import Dashboard from './pages/admin/Dashboard';
@@ -88,8 +90,8 @@ function App() {
                       <Routes>
                         <Route path="mascotas" element={<TodasMascotas />} />
                         <Route path="mascota/:id" element={<MascotaInfo />} />
-                        <Route path="recetas" element={<RecetasLista />} />
-                        <Route path="vacunas" element={<VacunasLista />} />
+                        <Route path="recetas" element={<Recetas />} />
+                        <Route path="vacunas" element={<Vacunas />} />
                         <Route path="*" element={<Navigate to="/veterinario/mascotas" replace />} />
                       </Routes>
                     </main>
