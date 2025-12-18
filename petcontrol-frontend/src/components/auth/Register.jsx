@@ -41,12 +41,7 @@ const Register = () => {
     if (!/\d/.test(password)) {
       return 'La contraseña debe contener al menos un número';
     }
-    
-    // Debe contener al menos un punto
-    if (!/\./.test(password)) {
-      return 'La contraseña debe contener al menos un punto (.)';
-    }
-    
+
     return null;
   };
 
@@ -196,7 +191,7 @@ const Register = () => {
                       <div className="invalid-feedback">{errors.password}</div>
                     )}
                     <small className="text-muted d-block mt-1">
-                      Mínimo 8 caracteres, debe incluir al menos un número y un punto (.)
+                       Mínimo 8 caracteres y al menos un número
                     </small>
                   </div>
 
@@ -243,9 +238,8 @@ const Register = () => {
                     <i className="bi bi-info-circle me-2"></i>
                     <strong>Requisitos de contraseña:</strong>
                     <ul className="mb-0 mt-2" style={{ fontSize: '0.85rem' }}>
-                      <li>Mínimo 8 caracteres</li>
-                      <li>Al menos un número (0-9)</li>
-                      <li>Al menos un punto (.)</li>
+                    <li>Mínimo 8 caracteres</li>
+                    <li>Al menos un número (0-9)</li>
                     </ul>
                   </small>
                 </div>

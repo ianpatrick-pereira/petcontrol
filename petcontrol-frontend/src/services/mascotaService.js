@@ -54,6 +54,12 @@ export const adminGetAllMascotas = async () => {
   return response.data;
 };
 
+// Veterinario: Get all pets (lectura total)
+export const veterinarioGetAllMascotas = async () => {
+  const response = await api.get('/veterinario/mascotas');
+  return response.data;
+};
+
 // Admin: Delete any pet
 export const adminDeleteMascota = async (id) => {
   const response = await api.delete(`/admin/mascotas/${id}`);

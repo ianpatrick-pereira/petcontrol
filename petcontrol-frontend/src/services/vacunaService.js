@@ -1,4 +1,4 @@
-import api from './api';
+import api from '../config/api';
 
 export const registrarVacuna = async (vacunaData) => {
   const response = await api.post('/vacunas', vacunaData);

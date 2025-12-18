@@ -16,7 +16,7 @@ const TodasMascotas = () => {
   const fetchMascotas = async () => {
     try {
       setLoading(true);
-      const data = await mascotaService.adminGetAllMascotas();
+      const data = await mascotaService.veterinarioGetAllMascotas();
       setMascotas(data);
       setError('');
     } catch (err) {

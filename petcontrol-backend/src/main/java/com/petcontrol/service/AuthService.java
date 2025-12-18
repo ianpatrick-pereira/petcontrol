@@ -63,9 +63,6 @@ public class AuthService {
         if (!password.matches(".*\\d.*")) {
             throw new RuntimeException("La contraseña debe contener al menos un número");
         }
-        if (!password.contains(".")) {
-            throw new RuntimeException("La contraseña debe contener al menos un punto (.)");
-        }
         
         Usuario usuario = new Usuario();
         usuario.setEmail(email);

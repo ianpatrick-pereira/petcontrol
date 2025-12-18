@@ -1,4 +1,4 @@
-import api from './api';
+import api from '../config/api';
 
 export const crearReceta = async (recetaData) => {
   const response = await api.post('/recetas', recetaData);

@@ -32,6 +32,18 @@ public class UsuarioService {
     public Optional<Usuario> getUsuarioByEmail(String email) {
         return usuarioRepository.findByEmail(email.toLowerCase().trim());
     }
+
+    /**
+     * Elimina un usuario SOLO si tiene rol CLIENTE. No elimina ADMIN/VETERINARIO.
+     */
+    public void eliminarClientePorId(Long id) {
+        Usuario usuario = usuarioRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+        if (usuario.getRol() != Usuario.Rol.CLIENTE) {
+            throw new RuntimeException("Solo se pueden eliminar perfiles de CLIENTE");
+        }
+        deleteUsuario(id);
+    }
     
     public Usuario createUsuario(Usuario usuario) {
         // Verificar si el email es protegido
