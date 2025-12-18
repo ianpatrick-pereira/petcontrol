@@ -11,7 +11,6 @@ const Register = () => {
   });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
   const { register } = useAuth();
 
   const handleChange = (e) => {
@@ -27,6 +26,15 @@ const Register = () => {
         [name]: ''
       }));
     }
+  };
+
+  const validatePassword = (password) => {
+    // Debe contener al menos un número
+    const hasNumber = /[0-9]/.test(password);
+    // Debe contener al menos un punto
+    const hasDot = /\./.test(password);
+    
+    return hasNumber && hasDot;
   };
 
   const validate = () => {
@@ -46,10 +54,16 @@ const Register = () => {
       newErrors.email = 'El correo no puede exceder 100 caracteres';
     }
 
+    // Verificar que no intente registrar usuarios protegidos
+    const protectedEmails = ['admin@admin.cl', 'veterinario@petcontrol.cl'];
+    if (protectedEmails.includes(formData.email.toLowerCase().trim())) {
+      newErrors.email = 'Este correo está reservado y no puede ser registrado';
+    }
+
     if (!formData.password) {
       newErrors.password = 'La contraseña es obligatoria';
-    } else if (formData.password.length < 4 || formData.password.length > 10) {
-      newErrors.password = 'La contraseña debe tener entre 4 y 10 caracteres';
+    } else if (!validatePassword(formData.password)) {
+      newErrors.password = 'La contraseña debe contener al menos un número y un punto (.)';
     }
 
     if (!formData.confirmPassword) {
@@ -63,7 +77,6 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrorMessage('');
 
     const newErrors = validate();
     if (Object.keys(newErrors).length > 0) {
@@ -80,7 +93,9 @@ const Register = () => {
     setLoading(false);
 
     if (!result.success) {
-      setErrorMessage(result.message);
+      window.alert('Error al registrarse: ' + result.message);
+    } else {
+      window.alert('¡Registro exitoso! Bienvenido a PetControl');
     }
   };
 
@@ -95,12 +110,6 @@ const Register = () => {
                 <h3 className="mt-2">PetControl</h3>
                 <p className="text-muted">Crear Cuenta</p>
               </div>
-
-              {errorMessage && (
-                <div className="alert alert-danger" role="alert">
-                  {errorMessage}
-                </div>
-              )}
 
               <form onSubmit={handleSubmit}>
                 <div className="mb-3">
@@ -155,7 +164,9 @@ const Register = () => {
                   {errors.password && (
                     <div className="invalid-feedback">{errors.password}</div>
                   )}
-                  <small className="text-muted">Entre 4 y 10 caracteres</small>
+                  <small className="text-muted">
+                    Debe contener al menos un número y un punto (.)
+                  </small>
                 </div>
 
                 <div className="mb-3">

@@ -23,7 +23,6 @@ const MascotaForm = () => {
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [loadingData, setLoadingData] = useState(isEdit);
-  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     fetchUsuarios();
@@ -55,7 +54,7 @@ const MascotaForm = () => {
         usuarioId: data.usuario?.id || ''
       });
     } catch (err) {
-      setErrorMessage('Error al cargar mascota: ' + (err.response?.data?.message || err.message));
+      window.alert('Error al cargar mascota: ' + (err.response?.data?.message || err.message));
     } finally {
       setLoadingData(false);
     }
@@ -105,7 +104,6 @@ const MascotaForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrorMessage('');
 
     const newErrors = validate();
     if (Object.keys(newErrors).length > 0) {
@@ -128,15 +126,15 @@ const MascotaForm = () => {
 
       if (isEdit) {
         await mascotaService.updateMascota(id, mascotaData);
-        alert('Mascota actualizada correctamente');
+        window.alert('Mascota actualizada correctamente');
       } else {
         await mascotaService.createMascota(mascotaData);
-        alert('Mascota creada correctamente');
+        window.alert('Mascota creada correctamente');
       }
 
       navigate('/admin/mascotas');
     } catch (err) {
-      setErrorMessage(err.response?.data?.message || 'Error al guardar mascota');
+      window.alert('Error al guardar mascota: ' + (err.response?.data?.message || err.message));
     } finally {
       setLoading(false);
     }
@@ -164,13 +162,6 @@ const MascotaForm = () => {
           Volver
         </button>
       </div>
-
-      {errorMessage && (
-        <div className="alert alert-danger alert-dismissible fade show" role="alert">
-          {errorMessage}
-          <button type="button" className="btn-close" onClick={() => setErrorMessage('')}></button>
-        </div>
-      )}
 
       <div className="card">
         <div className="card-body">
@@ -298,7 +289,7 @@ const MascotaForm = () => {
                 name="imagen"
                 value={formData.imagen}
                 onChange={handleChange}
-                placeholder="/images/Pet.jpg"
+                placeholder="/images/pet.jpg"
               />
               <small className="text-muted">URL de la foto de la mascota</small>
             </div>

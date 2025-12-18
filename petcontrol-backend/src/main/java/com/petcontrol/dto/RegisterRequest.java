@@ -2,7 +2,7 @@ package com.petcontrol.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,7 +17,10 @@ public class RegisterRequest {
     private String email;
     
     @NotBlank(message = "La contraseña es obligatoria")
-    @Size(min = 3, message = "La contraseña debe tener al menos 3 caracteres")
+    @Pattern(
+        regexp = "^(?=.*[0-9])(?=.*\\.).*$",
+        message = "La contraseña debe contener al menos un número y un punto (.)"
+    )
     private String password;
     
     private String nombre;
